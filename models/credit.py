@@ -1,12 +1,12 @@
-from sqlalchemy import Column, Integer, String, DateTime, func
-from database.main import Base
+from datetime import datetime
+from sqlalchemy import Integer, String, DateTime, func
+from sqlalchemy.orm import Mapped, mapped_column
+from database import Base
 
 
 class Credit(Base):
     __tablename__ = "credit"
 
-    id = Column(Integer, primary_key=True, autoincrement=True, name="id")
-    name = Column(String(50), nullable=False, name="name")
-    created_at = Column(
-        DateTime, nullable=False, server_default=func.now(), name="created_at"
-    )
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    name: Mapped[str] = mapped_column(String(50))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))

@@ -12,6 +12,10 @@ DB_PASSWORD = str(os.getenv("DB_PASSWORD"))
 DB_PASSWORD_ENCODED = quote_plus(DB_PASSWORD)
 DB_NAME = os.getenv("DB_NAME")
 
+SECRET_KEY = os.getenv("SECRET_KEY", "")
+SECRET_ALGORITHM = os.getenv("SECRET_ALGORITHM", "")
+SECRET_EXPIRE_MINUTES: int = int(os.getenv("SECRET_EXPIRE_MINUTES", "60"))
+
 
 DATABASE_URL = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD_ENCODED}@{DB_HOST}/{DB_NAME}"
 
